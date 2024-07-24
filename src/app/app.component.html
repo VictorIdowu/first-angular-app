@@ -1,3 +1,89 @@
-<!-- <h1>{{ title }}</h1> -->
-<app-navbar></app-navbar>
-<app-header></app-header>
+<!-- String Interpolation -->
+<h1>{{ title }}</h1>
+
+<p>{{ n2 === n1 ? "Table" : "Chair" }}</p>
+
+<!-- <img width="100px" height="100px" src="{{ img }}" alt="" /> -->
+<!-- Property Binding -->
+<img width="100px" height="100px" [src]="img" alt="" />
+
+<button disabled="{{ isDisabled }}">Disable Using String Interpolation</button>
+<button [disabled]="isDisabled">Disable Using Property Binding</button>
+
+<!-- Class binding -->
+<button
+  (click)="toggleBtn()"
+  [class.active]="isActive"
+  [class.not-active]="!isActive"
+>
+  {{ isActive ? "Active" : "Not active" }}
+</button>
+
+<div class="nav-list">
+  <p
+    class="nav"
+    (click)="swithNav('home')"
+    [class.current]="currentNav === 'home'"
+  >
+    Home
+  </p>
+  <p
+    class="nav"
+    (click)="swithNav('about')"
+    [class.current]="currentNav === 'about'"
+  >
+    About
+  </p>
+  <p
+    class="nav"
+    (click)="swithNav('contact')"
+    [class.current]="currentNav === 'contact'"
+  >
+    Contact
+  </p>
+</div>
+
+<!-- Style Binding -->
+<button
+  (click)="toggleDanger()"
+  [style.background]="isDanger ? 'red' : 'green'"
+>
+  Style
+</button>
+
+<!-- Event Binding -->
+<input
+  (keyup.enter)="setTitle($event)"
+  type="text"
+  class="input"
+  placeholder="Name"
+/>
+
+<!-- Template Variable -->
+<input
+  (keyup.enter)="getInput(user)"
+  type="text"
+  class="input"
+  placeholder="Username"
+  #user
+/>
+
+<input
+  type="text"
+  class="input"
+  placeholder="Username"
+  [value]="userName"
+  #username
+  (keyup)="updateUsername(username)"
+  (keyup.enter)="setTitle2()"
+/>
+
+<!-- Two way Data binding -->
+<input type="text" class="input" [(ngModel)]="person.name" />
+<input
+  type="number"
+  class="input"
+  [(ngModel)]="person.age"
+  (keyup.enter)="showPerson()"
+/>
+<p>{{ person.name + "--" + person.age }}</p>

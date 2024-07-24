@@ -1,0 +1,43 @@
+button {
+  width: 10rem;
+  height: 2.5rem;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.active {
+  background-color: blue;
+}
+
+.not-active {
+  background-color: brown;
+}
+
+.nav-list {
+  margin-top: 1rem;
+  display: flex;
+  /* gap: 2rem; */
+}
+
+.nav {
+  padding: 1rem;
+  border-radius: 9px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 500ms;
+}
+
+.nav:hover {
+  background-color: beige;
+}
+
+.current {
+  background-color: bisque !important;
+}
+
+.input {
+  margin-top: 2rem;
+  display: block;
+  height: 2.5rem;
+  border-radius: 9px;
+}
