@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AppNavbar } from './navbar/Navbar.component';
-import { HeaderComponent } from './header/header.component';
+// import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
+import { PostsListComponent } from './posts-list/posts-list.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AppNavbar, HeaderComponent, FormsModule],
+  imports: [
+    RouterOutlet,
+    AppNavbar,
+    // HeaderComponent,
+    FormsModule,
+    PostsListComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -60,4 +67,6 @@ export class AppComponent {
   showPerson() {
     console.log(this.person);
   }
+
+  postTitle: string = 'Post 1';
 }
