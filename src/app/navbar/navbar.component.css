@@ -1,0 +1,32 @@
+.nav-items {
+  margin-top: 1rem;
+  display: flex;
+  /* gap: 2rem; */
+}
+
+.nav-item {
+  padding: 1rem;
+  border-radius: 9px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 500ms;
+}
+
+.nav-item:hover {
+  background-color: beige;
+}
+
+.activeItem {
+  background-color: bisque !important;
+}
+
+.nav-input {
+  margin-top: 2rem;
+  display: block;
+  height: 2.5rem;
+  border-radius: 9px;
+}
+
+.nn {
+  background-color: blue;
+}

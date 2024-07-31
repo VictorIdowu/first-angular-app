@@ -13,3 +13,106 @@
   <p>{{ item }}</p>
   }
 </div>
+
+<!-- if Directive with number values -->
+
+@if(loginCount < 3) {
+<button (click)="countLoginAttempts()">Log In</button>
+} @else{
+<h4>Exceeded 3 login attemps, Try again later</h4>
+}
+
+<!-- ng-template -->
+
+<ng-template #callToAction>
+  <button>Join Now</button>
+</ng-template>
+
+<div [ngTemplateOutlet]="callToAction">
+  <h5>Sidebar</h5>
+</div>
+<div [ngTemplateOutlet]="callToAction">
+  <h5>Hero</h5>
+</div>
+<div [ngTemplateOutlet]="callToAction">
+  <h5>Footer</h5>
+</div>
+
+<div class="nav-items">
+  @for (item of newNavs; track $index) {
+  <p
+    class="nav-item"
+    (click)="switchNav(item)"
+    [class.activeItem]="activeNav === item"
+  >
+    {{ item }}
+  </p>
+  }
+</div>
+
+@if(users.length === 0){
+<p>No Users yet</p>
+} @else {
+<ul>
+  @for (user of users; track user.id) {
+  <!-- <li [class.activeItem]="$first" [class.nn]="$last"> -->
+  <li [class.activeItem]="$even">
+    <!-- {{ $count }} -->
+    <span>{{ user.name }}</span>
+    -----
+    <span>{{ user.email }}</span>
+    -----
+    <span><button (click)="deleteItem($index)">Delete</button></span>
+  </li>
+  }
+</ul>
+}
+<form (submit)="addNewUser()">
+  <input
+    class="nav-input"
+    type="text"
+    placeholder="Enter Name"
+    name="name"
+    [(ngModel)]="newUser.name"
+  />
+  <input
+    class="nav-input"
+    type="text"
+    placeholder="Enter Email"
+    name="email"
+    [(ngModel)]="newUser.email"
+  />
+  <button type="submit">Add</button>
+</form>
+
+<!-- Switch -->
+
+<div [ngSwitch]="usersRole">
+  <p *ngSwitchCase="'Admin'">Welcome Admin</p>
+  <p *ngSwitchCase="'Member'">Welcome Member</p>
+  <p *ngSwitchDefault>Please Login</p>
+</div>
+
+@switch (usersRole) { @case ("Admin") {
+<p>Welcome Admin</p>
+} @case ("Member") {
+<p>Welcome Member</p>
+} @default {
+<p>Please Login</p>
+} }
+
+<!-- Attribute Directive -->
+<!-- <h1
+  [style.color]="isLoggedIn ? 'green' : 'red'"
+  [style.textTransform]="isLoggedIn ? 'uppercase' : 'lowercase'"
+>
+  Welcome Admin
+</h1> -->
+<h1
+  [ngStyle]="{
+    color: isLoggedIn ? 'green' : 'red',
+    textTransform: isLoggedIn ? 'uppercase' : 'lowercase'
+  }"
+>
+  Welcome Admin
+</h1>
